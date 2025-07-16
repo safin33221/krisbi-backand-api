@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-export interface Product {
+export interface IProduct {
     _id: mongoose.ObjectId
     product_name: string;
     description: string;
     price: number;
-    category_id: string;
+    category_id: mongoose.ObjectId;
     discountPercentage: number;
     photoUrl: string;
 }
