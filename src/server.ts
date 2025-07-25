@@ -9,7 +9,7 @@ const startServer = async () => {
         await mongoose.connect('mongodb+srv://safin33221:0d04s9VNvxNlmL8a@cluster0.blz8y.mongodb.net/krisbi?retryWrites=true&w=majority&appName=Cluster0')
         console.log('db is connected');
 
-        server = app.listen(5000, () => {
+        server = app.listen(3000, () => {
             console.log(`server is listing port on ${5000}`);
         })
     } catch (error) {

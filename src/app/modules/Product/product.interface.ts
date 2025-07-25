@@ -5,7 +5,7 @@ export interface IProduct {
     product_name: string;
     description: string;
     price: number;
-    category_id: mongoose.ObjectId;
+    category_id: string;
     discountPercentage: number;
     photoUrl: string;
 }

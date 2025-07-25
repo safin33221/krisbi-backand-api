@@ -16,9 +16,9 @@ const productSchema = new Schema<IProduct>({
         required: true,
     },
     category_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category', // Reference to Category collection
-        required: true,
+        type: String,
+        // ref: 'Category', // Reference to Category collection
+        // required: true,
     },
     discountPercentage: {
         type: Number,
