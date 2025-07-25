@@ -6,18 +6,35 @@ const createProduct = async (payload: IProduct) => {
     return product
 }
 
-const getAllProduct = async()=>{
+const getAllProduct = async () => {
     const allProduct = await Product.find({})
     const totalProduct = await Product.countDocuments()
 
     return {
         allProduct,
         totalProduct
-        
+
     }
 }
 
+
+const updateProduct = async (id: string, payload: Partial<IProduct>) => {
+    const isProductExist = await Product.findById(id)
+    if (!isProductExist) {
+        throw new Error("Product Not Found")
+    }
+
+    const updateProduct = await Product.findByIdAndUpdate(id, payload, { new: true, runValidators: true })
+    return updateProduct
+}
+
+const deleteProduct = async (id: string) => {
+    await Product.findByIdAndDelete(id)
+    return null
+}
 export const productService = {
     createProduct,
-    getAllProduct
+    getAllProduct,
+    updateProduct,
+    deleteProduct
 }

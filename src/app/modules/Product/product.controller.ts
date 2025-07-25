@@ -20,7 +20,7 @@ const getAllProduct = async (req: Request, res: Response, next: NextFunction) =>
         const result = await productService.getAllProduct()
         res.status(201).json({
             success: true,
-            message: "Product Add successfully",
+            message: "Product get successfully",
             data: result.allProduct,
             meta: {
                 totalProduct: result.totalProduct
@@ -34,8 +34,34 @@ const getAllProduct = async (req: Request, res: Response, next: NextFunction) =>
 
 }
 
+const updateProduct = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const id = req.params.id
+        const result = await productService.updateProduct(id, req.body)
+        res.status(201).json({
+            success: true,
+            message: "Product updated successfully",
+            data: result
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id
+    const result = await productService.deleteProduct(id)
+    res.status(201).json({
+        success: true,
+        message: "Product Deleted  successfully",
+        data: result
+    })
+}
+
 
 export const productController = {
     createProduct,
-    getAllProduct
+    getAllProduct,
+    updateProduct,
+    deleteProduct
 }
